@@ -27,3 +27,30 @@ function getHumanChoice() {
 
     return input;
 }
+
+function playRound(humanChoice, computerChoice) {
+    // All combos where human choice beats computer choice
+    if ((humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")) {
+        
+        humanChoice = humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1);
+        computerChoice = computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        humanScore++;
+    }
+    // All combos where human choice loses to computer choice
+    else if ((computerChoice === "rock" && humanChoice === "scissors") ||
+             (computerChoice === "paper" && humanChoice === "rock") ||
+             (computerChoice === "scissors" && humanChoice === "paper")) {
+        
+        humanChoice = humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1);
+        computerChoice = computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        computerScore++;
+    }
+    // All combos where human choice and computer choice are the same
+    else {
+        console.log("It's a tie!");
+    }
+}
