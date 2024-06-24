@@ -14,3 +14,10 @@ This game is played completely via the browser console by calling the "playGame(
 ## Skills Applied
 
 The main goal of this project was to create a simple, interactive JavaScript application in order to apply what was taught in the [JavaScript Basics](https://www.theodinproject.com/paths/foundations/courses/foundations#javascript-basics) section of the [Foundations](https://www.theodinproject.com/paths/foundations/courses/foundations) course.
+
+
+## Live View
+
+Click [here](https://rjnares.github.io/rock-paper-scissors-odin/) for a live view of this project.
+
+Note: To start the game, run the "playGame()" function in the browser console.
