@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     // Get random integer in range [0, 2]
     const randomInteger = Math.floor(Math.random() * 3);
