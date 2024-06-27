@@ -85,15 +85,30 @@ options.addEventListener("click", (event) => {
 });
 
 function playRound(playerChoice, cpuChoice) {
-    const choicesMessage = `You chose ${playerChoice} and the CPU chose ${cpuChoice}.`;
+    let newMessage = `You chose ${playerChoice} and the CPU chose ${cpuChoice}.`;
+    
     if (playerChoice === cpuChoice) {
-        message.textContent =  `${choicesMessage} Round ends in a draw.`;
+        message.textContent =  `${newMessage} Round ends in a draw.`;
     } else if (playerWinsRound(playerChoice, cpuChoice)) {
-        message.textContent = `${choicesMessage} You win this round.`;
-        playerScore.textContent = parseInt(playerScore.textContent || 0) + 1;
+        newMessage += " You win this round.";
+        const newPlayerScore = parseInt(playerScore.textContent || 0) + 1;     
+
+        if (newPlayerScore === 5) {
+            newMessage += " Game over, you win! Press any option to start a new game. First to 5 points wins.";
+        }
+
+        playerScore.textContent = newPlayerScore;
+        message.textContent = newMessage;
     } else {
-        message.textContent = `${choicesMessage} CPU wins this round.`;
-        cpuScore.textContent = parseInt(cpuScore.textContent || 0) + 1;
+        newMessage += " You lose this round.";
+        const newCpuScore = parseInt(cpuScore.textContent || 0) + 1;
+
+        if (newCpuScore === 5) {
+            newMessage += " Game over, you lose! Press any option to start a new game. First to 5 points wins.";
+        }
+
+        cpuScore.textContent = newCpuScore;
+        message.textContent = newMessage;
     }
 }
 
