@@ -79,7 +79,6 @@ const validOptions = ["rock", "paper", "scissors"];
 const options = document.querySelector("#options");
 
 options.addEventListener("click", (event) => {
-    console.log(event.target);
     if (validOptions.includes(event.target.id)) {
         playRound(event.target.id, getComputerChoice());
     }
@@ -88,4 +87,20 @@ options.addEventListener("click", (event) => {
 function playRound(playerChoice, cpuChoice) {
     console.log(`Player choice: ${playerChoice}`);
     console.log(`CPU choice: ${cpuChoice}`);
+
+    if (playerChoice === cpuChoice) {
+        console.log("Round ends in a tie");
+    }
+    else if (playerWinsRound(playerChoice, cpuChoice)) {
+        console.log("Player wins this round");
+    }
+    else {
+        console.log("CPU wins this round");
+    }
+}
+
+function playerWinsRound(playerChoice, cpuChoice) {
+    return playerChoice === "rock" && cpuChoice === "scissors" ||
+           playerChoice === "paper" && cpuChoice === "rock" ||
+           playerChoice === "scissors" && cpuChoice === "paper";
 }
