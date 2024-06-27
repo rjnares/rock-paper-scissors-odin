@@ -28,31 +28,34 @@ function getComputerChoice() {
 }
 
 function playRound(playerChoice, cpuChoice) {
+    if (currPlayerScore === 5 || currCpuScore === 5) {
+        currPlayerScore = 0;
+        currCpuScore = 0;
+    }
+
     let newMessage = `You chose ${playerChoice} and the CPU chose ${cpuChoice}.`;
     
     if (playerChoice === cpuChoice) {
-        message.textContent =  `${newMessage} Round ends in a draw.`;
+        newMessage += " Round ends in a draw.";
     } else if (playerWinsRound(playerChoice, cpuChoice)) {
-        newMessage += " You win this round.";
         currPlayerScore++;
+        newMessage += " You win this round.";
 
         if (currPlayerScore === 5) {
             newMessage += " Game over, you win! Press any option to start a new game. First to 5 points wins.";
         }
-
-        playerScore.textContent = currPlayerScore;
-        message.textContent = newMessage;
     } else {
-        newMessage += " You lose this round.";
         currCpuScore++;
+        newMessage += " You lose this round.";
 
         if (currCpuScore === 5) {
             newMessage += " Game over, you lose! Press any option to start a new game. First to 5 points wins.";
         }
-
-        cpuScore.textContent = currCpuScore;
-        message.textContent = newMessage;
     }
+
+    playerScore.textContent = currPlayerScore;
+    cpuScore.textContent = currCpuScore;
+    message.textContent = newMessage;
 }
 
 function playerWinsRound(playerChoice, cpuChoice) {
