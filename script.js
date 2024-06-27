@@ -71,12 +71,12 @@ function playGame() {
     }
 }
 
-let playerScore = 0;
-let computerScore = 0;
-
 const validOptions = ["rock", "paper", "scissors"];
 
+const message = document.querySelector("#message");
 const options = document.querySelector("#options");
+const playerScore = document.querySelector("#player-score .score");
+const cpuScore = document.querySelector("#cpu-score .score");
 
 options.addEventListener("click", (event) => {
     if (validOptions.includes(event.target.id)) {
@@ -85,17 +85,15 @@ options.addEventListener("click", (event) => {
 });
 
 function playRound(playerChoice, cpuChoice) {
-    console.log(`Player choice: ${playerChoice}`);
-    console.log(`CPU choice: ${cpuChoice}`);
-
+    const choicesMessage = `You chose ${playerChoice} and the CPU chose ${cpuChoice}.`;
     if (playerChoice === cpuChoice) {
-        console.log("Round ends in a tie");
-    }
-    else if (playerWinsRound(playerChoice, cpuChoice)) {
-        console.log("Player wins this round");
-    }
-    else {
-        console.log("CPU wins this round");
+        message.textContent =  `${choicesMessage} Round ends in a draw.`;
+    } else if (playerWinsRound(playerChoice, cpuChoice)) {
+        message.textContent = `${choicesMessage} You win this round.`;
+        playerScore.textContent = parseInt(playerScore.textContent || 0) + 1;
+    } else {
+        message.textContent = `${choicesMessage} CPU wins this round.`;
+        cpuScore.textContent = parseInt(cpuScore.textContent || 0) + 1;
     }
 }
 
