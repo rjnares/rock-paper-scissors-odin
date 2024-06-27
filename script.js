@@ -70,3 +70,22 @@ function playGame() {
         console.log(`Game Over! You tied ${humanScore} to ${computerScore}.`);
     }
 }
+
+let playerScore = 0;
+let computerScore = 0;
+
+const validOptions = ["rock", "paper", "scissors"];
+
+const options = document.querySelector("#options");
+
+options.addEventListener("click", (event) => {
+    console.log(event.target);
+    if (validOptions.includes(event.target.id)) {
+        playRound(event.target.id, getComputerChoice());
+    }
+});
+
+function playRound(playerChoice, cpuChoice) {
+    console.log(`Player choice: ${playerChoice}`);
+    console.log(`CPU choice: ${cpuChoice}`);
+}
