@@ -78,6 +78,9 @@ const options = document.querySelector("#options");
 const playerScore = document.querySelector("#player-score .score");
 const cpuScore = document.querySelector("#cpu-score .score");
 
+let currPlayerScore = 0;
+let currCpuScore = 0;
+
 options.addEventListener("click", (event) => {
     if (validOptions.includes(event.target.id)) {
         playRound(event.target.id, getComputerChoice());
@@ -91,23 +94,23 @@ function playRound(playerChoice, cpuChoice) {
         message.textContent =  `${newMessage} Round ends in a draw.`;
     } else if (playerWinsRound(playerChoice, cpuChoice)) {
         newMessage += " You win this round.";
-        const newPlayerScore = parseInt(playerScore.textContent || 0) + 1;     
+        currPlayerScore++;
 
-        if (newPlayerScore === 5) {
+        if (currPlayerScore === 5) {
             newMessage += " Game over, you win! Press any option to start a new game. First to 5 points wins.";
         }
 
-        playerScore.textContent = newPlayerScore;
+        playerScore.textContent = currPlayerScore;
         message.textContent = newMessage;
     } else {
         newMessage += " You lose this round.";
-        const newCpuScore = parseInt(cpuScore.textContent || 0) + 1;
+        currCpuScore++;
 
-        if (newCpuScore === 5) {
+        if (currCpuScore === 5) {
             newMessage += " Game over, you lose! Press any option to start a new game. First to 5 points wins.";
         }
 
-        cpuScore.textContent = newCpuScore;
+        cpuScore.textContent = currCpuScore;
         message.textContent = newMessage;
     }
 }
