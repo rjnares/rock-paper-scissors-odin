@@ -42,14 +42,14 @@ function playRound(playerChoice, cpuChoice) {
         newMessage += " You win this round.";
 
         if (currPlayerScore === 5) {
-            newMessage += " Game over, you win! Press any option to start a new game. First to 5 points wins.";
+            newMessage += "\nGame over, you win! Press any option to start a new game. First to 5 points wins.";
         }
     } else {
         currCpuScore++;
         newMessage += " You lose this round.";
 
         if (currCpuScore === 5) {
-            newMessage += " Game over, you lose! Press any option to start a new game. First to 5 points wins.";
+            newMessage += "\nGame over, you lose! Press any option to start a new game. First to 5 points wins.";
         }
     }
 
